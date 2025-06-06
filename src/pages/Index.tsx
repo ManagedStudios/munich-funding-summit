@@ -1,12 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import Navigation from '../components/Navigation';
+import HeroSection from '../components/HeroSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-black">
+      <Navigation />
+      <HeroSection />
+      
+      {/* Placeholder sections for demonstration */}
+      <section className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-center text-white">
+          <h2 className="text-4xl font-bold mb-4 font-inter">Why Join?</h2>
+          <p className="text-xl">Content coming soon...</p>
+        </div>
+      </section>
+      
+      <section className="min-h-screen bg-gray-800 flex items-center justify-center">
+        <div className="text-center text-white">
+          <h2 className="text-4xl font-bold mb-4 font-inter">Partnership Opportunities</h2>
+          <p className="text-xl">Content coming soon...</p>
+        </div>
+      </section>
     </div>
   );
 };
