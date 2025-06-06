@@ -90,6 +90,36 @@
   }
 }
 
+@layer utilities {
+  @keyframes beam-glow {
+    0%, 100% {
+      opacity: 0.15;
+      transform: translateY(0) scaleX(1);
+    }
+    50% {
+      opacity: 0.35;
+      transform: translateY(10px) scaleX(1.05);
+    }
+  }
+
+  @keyframes ambient-glow {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  .animate-beam-glow {
+    animation: beam-glow 6s ease-in-out infinite;
+  }
+
+  .animate-ambient-glow {
+    animation: ambient-glow 5s ease-in-out infinite;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

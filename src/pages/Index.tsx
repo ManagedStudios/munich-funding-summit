@@ -3,7 +3,7 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
 
 const Index = () => {
@@ -94,24 +94,16 @@ const Index = () => {
             Presented by
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
+            <Card className="invisible">
+
+            </Card>
             <Card className="text-center">
               <CardHeader>
                 <CardTitle className="text-primary font-inter">Enactus Munich</CardTitle>
-                <CardDescription>Main host, mission-driven student organization</CardDescription>
+                <CardDescription>Empowering Impact Entrepreneurs.</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle className="text-primary font-inter">START Munich</CardTitle>
-                <CardDescription>Empowering the next generation of startup builders</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle className="text-primary font-inter">Young Founders Network</CardTitle>
-                <CardDescription>Early-stage innovation network</CardDescription>
-              </CardHeader>
-            </Card>
+
           </div>
         </div>
       </section>
