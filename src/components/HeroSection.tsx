@@ -18,11 +18,11 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Mid Layer - Overhead spotlights with enhanced animation */}
+        {/* Mid Layer - Overhead spotlights with subtle animation */}
         <div className="absolute inset-0">
           {/* Main center spotlight from above */}
           <div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 rounded-full opacity-40"
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 rounded-full opacity-40 animate-pulse"
             style={{
               background: `radial-gradient(circle, 
                 rgba(249, 186, 63, 0.6) 0%, 
@@ -30,40 +30,40 @@ const HeroSection = () => {
                 rgba(249, 186, 63, 0.1) 50%, 
                 transparent 70%)`,
               filter: 'blur(40px)',
-              animation: 'lightPulse 6s ease-in-out infinite',
+              animationDuration: '4s',
             }}
           />
           
           {/* Left overhead light */}
           <div 
-            className="absolute top-0 left-1/4 w-64 h-64 rounded-full opacity-25"
+            className="absolute top-0 left-1/4 w-64 h-64 rounded-full opacity-25 animate-pulse"
             style={{
               background: `radial-gradient(circle, 
                 rgba(255, 255, 255, 0.4) 0%, 
                 rgba(255, 255, 255, 0.2) 40%, 
                 transparent 70%)`,
               filter: 'blur(60px)',
-              animation: 'lightSway 8s ease-in-out infinite',
+              animationDuration: '6s',
               animationDelay: '1s',
             }}
           />
           
           {/* Right overhead light */}
           <div 
-            className="absolute top-0 right-1/4 w-64 h-64 rounded-full opacity-25"
+            className="absolute top-0 right-1/4 w-64 h-64 rounded-full opacity-25 animate-pulse"
             style={{
               background: `radial-gradient(circle, 
                 rgba(255, 255, 255, 0.4) 0%, 
                 rgba(255, 255, 255, 0.2) 40%, 
                 transparent 70%)`,
               filter: 'blur(60px)',
-              animation: 'lightSway 7s ease-in-out infinite reverse',
+              animationDuration: '5s',
               animationDelay: '2s',
             }}
           />
         </div>
 
-        {/* Front Layer - Enhanced light beams from above */}
+        {/* Front Layer - Light beams from above */}
         <div className="absolute inset-0">
           {/* Central light beam */}
           <div 
@@ -75,7 +75,7 @@ const HeroSection = () => {
                 rgba(249, 186, 63, 0.3) 40%, 
                 transparent 70%)`,
               filter: 'blur(8px)',
-              animation: 'beamGlow 5s ease-in-out infinite',
+              animation: 'glow 5s ease-in-out infinite',
             }}
           />
           
@@ -91,7 +91,7 @@ const HeroSection = () => {
               filter: 'blur(4px)',
               transform: 'rotate(-15deg)',
               transformOrigin: 'top center',
-              animation: 'beamSway 9s ease-in-out infinite',
+              animation: 'glow 7s ease-in-out infinite',
               animationDelay: '1.5s',
             }}
           />
@@ -108,39 +108,8 @@ const HeroSection = () => {
               filter: 'blur(4px)',
               transform: 'rotate(15deg)',
               transformOrigin: 'top center',
-              animation: 'beamSway 8s ease-in-out infinite reverse',
+              animation: 'glow 6s ease-in-out infinite',
               animationDelay: '3s',
-            }}
-          />
-
-          {/* Additional moving light streaks */}
-          <div 
-            className="absolute top-0 left-2/3 w-0.5 h-2/3 opacity-10"
-            style={{
-              background: `linear-gradient(180deg, 
-                rgba(249, 186, 63, 0.5) 0%, 
-                rgba(249, 186, 63, 0.3) 40%, 
-                transparent 70%)`,
-              filter: 'blur(2px)',
-              transform: 'rotate(-8deg)',
-              transformOrigin: 'top center',
-              animation: 'subtleBeam 12s ease-in-out infinite',
-              animationDelay: '4s',
-            }}
-          />
-
-          <div 
-            className="absolute top-0 right-2/3 w-0.5 h-2/3 opacity-10"
-            style={{
-              background: `linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.4) 0%, 
-                rgba(255, 255, 255, 0.2) 40%, 
-                transparent 70%)`,
-              filter: 'blur(2px)',
-              transform: 'rotate(8deg)',
-              transformOrigin: 'top center',
-              animation: 'subtleBeam 10s ease-in-out infinite reverse',
-              animationDelay: '6s',
             }}
           />
         </div>
@@ -155,33 +124,32 @@ const HeroSection = () => {
                 rgba(249, 186, 63, 0.1) 50%, 
                 transparent 100%)`,
               filter: 'blur(20px)',
-              animation: 'floorGlow 8s ease-in-out infinite',
             }}
           />
         </div>
 
-        {/* Enhanced atmospheric particles */}
+        {/* Atmospheric particles */}
         <div className="absolute inset-0 opacity-10">
           <div 
-            className="absolute top-1/4 left-1/5 w-2 h-2 bg-white rounded-full"
+            className="absolute top-1/4 left-1/5 w-2 h-2 bg-white rounded-full animate-pulse"
             style={{
               filter: 'blur(1px)',
-              animation: 'particleFloat 8s ease-in-out infinite',
+              animationDuration: '8s',
             }}
           />
           <div 
-            className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full"
+            className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full animate-pulse"
             style={{
               filter: 'blur(0.5px)',
-              animation: 'particleFloat 6s ease-in-out infinite',
+              animationDuration: '6s',
               animationDelay: '2s',
             }}
           />
           <div 
-            className="absolute top-1/2 left-2/3 w-1.5 h-1.5 bg-white rounded-full"
+            className="absolute top-1/2 left-2/3 w-1.5 h-1.5 bg-white rounded-full animate-pulse"
             style={{
               filter: 'blur(1px)',
-              animation: 'particleFloat 7s ease-in-out infinite',
+              animationDuration: '7s',
               animationDelay: '4s',
             }}
           />
@@ -255,92 +223,6 @@ const HeroSection = () => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         }}
       />
-
-      {/* Custom keyframes for enhanced animations */}
-      <style jsx>{`
-        @keyframes lightPulse {
-          0%, 100% { 
-            opacity: 0.4; 
-            transform: translateX(-50%) scale(1);
-          }
-          50% { 
-            opacity: 0.6; 
-            transform: translateX(-50%) scale(1.1);
-          }
-        }
-
-        @keyframes lightSway {
-          0%, 100% { 
-            opacity: 0.25; 
-            transform: translateX(0) translateY(0);
-          }
-          33% { 
-            opacity: 0.15; 
-            transform: translateX(-10px) translateY(5px);
-          }
-          66% { 
-            opacity: 0.35; 
-            transform: translateX(10px) translateY(-5px);
-          }
-        }
-
-        @keyframes beamGlow {
-          0%, 100% { 
-            opacity: 0.2; 
-            filter: blur(8px);
-          }
-          50% { 
-            opacity: 0.35; 
-            filter: blur(6px);
-          }
-        }
-
-        @keyframes beamSway {
-          0%, 100% { 
-            opacity: 0.15; 
-            transform: rotate(-15deg) translateX(0);
-          }
-          50% { 
-            opacity: 0.25; 
-            transform: rotate(-12deg) translateX(3px);
-          }
-        }
-
-        @keyframes subtleBeam {
-          0%, 100% { 
-            opacity: 0.1; 
-            transform: rotate(-8deg) translateY(0);
-          }
-          50% { 
-            opacity: 0.05; 
-            transform: rotate(-10deg) translateY(2px);
-          }
-        }
-
-        @keyframes floorGlow {
-          0%, 100% { 
-            opacity: 0.2; 
-          }
-          50% { 
-            opacity: 0.3; 
-          }
-        }
-
-        @keyframes particleFloat {
-          0%, 100% { 
-            opacity: 0.1; 
-            transform: translateY(0) scale(1);
-          }
-          33% { 
-            opacity: 0.05; 
-            transform: translateY(-3px) scale(0.8);
-          }
-          66% { 
-            opacity: 0.15; 
-            transform: translateY(2px) scale(1.2);
-          }
-        }
-      `}</style>
     </section>
   );
 };
