@@ -20,98 +20,147 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen bg-black overflow-hidden font-inter">
-      {/* Background Stage Lighting */}
+      {/* Background Stage Lighting - Coming from Above */}
       <div className="absolute inset-0">
-        {/* Back Layer - Atmospheric gradient */}
+        {/* Back Layer - Atmospheric gradient from top */}
         <div 
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-30"
           style={{
-            background: `radial-gradient(ellipse at center, 
-              rgba(147, 51, 234, 0.3) 0%, 
-              rgba(59, 130, 246, 0.2) 40%, 
-              rgba(0, 0, 0, 0.8) 70%, 
+            background: `radial-gradient(ellipse 80% 60% at 50% 0%, 
+              rgba(147, 51, 234, 0.4) 0%, 
+              rgba(59, 130, 246, 0.3) 30%, 
+              rgba(0, 0, 0, 0.9) 60%, 
               rgba(0, 0, 0, 1) 100%)`,
-            transform: `translateY(${scrollY * 0.1}px)`,
+            transform: `translateY(${scrollY * 0.2}px)`,
           }}
         />
 
-        {/* Mid Layer - Volumetric glows */}
+        {/* Mid Layer - Overhead spotlights */}
         <div className="absolute inset-0">
+          {/* Main center spotlight from above */}
           <div 
-            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-30"
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 rounded-full opacity-40"
             style={{
               background: `radial-gradient(circle, 
-                rgba(249, 186, 63, 0.4) 0%, 
-                rgba(249, 186, 63, 0.1) 40%, 
-                transparent 70%)`,
-              filter: 'blur(60px)',
-              transform: `translate(${scrollY * 0.15}px, ${scrollY * 0.08}px)`,
-            }}
-          />
-          <div 
-            className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full opacity-25"
-            style={{
-              background: `radial-gradient(circle, 
-                rgba(255, 255, 255, 0.3) 0%, 
-                rgba(255, 255, 255, 0.1) 50%, 
-                transparent 70%)`,
-              filter: 'blur(80px)',
-              transform: `translate(${-scrollY * 0.12}px, ${scrollY * 0.06}px)`,
-            }}
-          />
-        </div>
-
-        {/* Front Layer - Light streaks */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute top-1/2 left-0 w-full h-1 opacity-20"
-            style={{
-              background: `linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(249, 186, 63, 0.8) 30%, 
-                rgba(255, 255, 255, 0.6) 50%, 
-                rgba(249, 186, 63, 0.8) 70%, 
-                transparent 100%)`,
-              filter: 'blur(2px)',
-              transform: `translateX(${scrollY * 0.2}px) rotate(-2deg)`,
-            }}
-          />
-          <div 
-            className="absolute top-1/3 right-0 w-3/4 h-0.5 opacity-15"
-            style={{
-              background: `linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.6) 40%, 
-                rgba(249, 186, 63, 0.4) 60%, 
-                transparent 100%)`,
-              filter: 'blur(1px)',
-              transform: `translateX(${-scrollY * 0.25}px) rotate(1deg)`,
-            }}
-          />
-        </div>
-
-        {/* Converging spotlights */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute top-0 left-1/4 w-1 h-full opacity-10"
-            style={{
-              background: `linear-gradient(180deg, 
                 rgba(249, 186, 63, 0.6) 0%, 
                 rgba(249, 186, 63, 0.3) 30%, 
-                transparent 60%)`,
+                rgba(249, 186, 63, 0.1) 50%, 
+                transparent 70%)`,
+              filter: 'blur(40px)',
+              transform: `translateX(-50%) translateY(${scrollY * 0.3}px)`,
+            }}
+          />
+          
+          {/* Left overhead light */}
+          <div 
+            className="absolute top-0 left-1/4 w-64 h-64 rounded-full opacity-25"
+            style={{
+              background: `radial-gradient(circle, 
+                rgba(255, 255, 255, 0.4) 0%, 
+                rgba(255, 255, 255, 0.2) 40%, 
+                transparent 70%)`,
+              filter: 'blur(60px)',
+              transform: `translateY(${scrollY * 0.25}px)`,
+            }}
+          />
+          
+          {/* Right overhead light */}
+          <div 
+            className="absolute top-0 right-1/4 w-64 h-64 rounded-full opacity-25"
+            style={{
+              background: `radial-gradient(circle, 
+                rgba(255, 255, 255, 0.4) 0%, 
+                rgba(255, 255, 255, 0.2) 40%, 
+                transparent 70%)`,
+              filter: 'blur(60px)',
+              transform: `translateY(${scrollY * 0.35}px)`,
+            }}
+          />
+        </div>
+
+        {/* Front Layer - Light beams from above */}
+        <div className="absolute inset-0">
+          {/* Central light beam */}
+          <div 
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-full opacity-20"
+            style={{
+              background: `linear-gradient(180deg, 
+                rgba(249, 186, 63, 0.8) 0%, 
+                rgba(249, 186, 63, 0.6) 20%, 
+                rgba(249, 186, 63, 0.3) 40%, 
+                transparent 70%)`,
+              filter: 'blur(8px)',
+              transform: `translateX(-50%) translateY(${scrollY * 0.15}px)`,
+            }}
+          />
+          
+          {/* Left diagonal beam */}
+          <div 
+            className="absolute top-0 left-1/3 w-1 h-3/4 opacity-15"
+            style={{
+              background: `linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(255, 255, 255, 0.4) 30%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                transparent 70%)`,
+              filter: 'blur(4px)',
+              transform: `translateY(${scrollY * 0.1}px) rotate(-15deg)`,
+              transformOrigin: 'top center'
+            }}
+          />
+          
+          {/* Right diagonal beam */}
+          <div 
+            className="absolute top-0 right-1/3 w-1 h-3/4 opacity-15"
+            style={{
+              background: `linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(255, 255, 255, 0.4) 30%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                transparent 70%)`,
+              filter: 'blur(4px)',
+              transform: `translateY(${scrollY * 0.1}px) rotate(15deg)`,
+              transformOrigin: 'top center'
+            }}
+          />
+        </div>
+
+        {/* Stage floor glow effect */}
+        <div className="absolute inset-0">
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-32 opacity-20"
+            style={{
+              background: `linear-gradient(0deg, 
+                rgba(249, 186, 63, 0.3) 0%, 
+                rgba(249, 186, 63, 0.1) 50%, 
+                transparent 100%)`,
               filter: 'blur(20px)',
-              transform: `translateX(${scrollY * 0.05}px) skewX(-5deg)`,
+              transform: `translateY(${-scrollY * 0.1}px)`,
+            }}
+          />
+        </div>
+
+        {/* Atmospheric particles */}
+        <div className="absolute inset-0 opacity-10">
+          <div 
+            className="absolute top-1/4 left-1/5 w-2 h-2 bg-white rounded-full"
+            style={{
+              filter: 'blur(1px)',
+              transform: `translate(${scrollY * 0.05}px, ${scrollY * 0.08}px)`,
             }}
           />
           <div 
-            className="absolute top-0 right-1/4 w-1 h-full opacity-10"
+            className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full"
             style={{
-              background: `linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.5) 0%, 
-                rgba(255, 255, 255, 0.2) 30%, 
-                transparent 60%)`,
-              filter: 'blur(25px)',
-              transform: `translateX(${-scrollY * 0.05}px) skewX(5deg)`,
+              filter: 'blur(0.5px)',
+              transform: `translate(${-scrollY * 0.03}px, ${scrollY * 0.12}px)`,
+            }}
+          />
+          <div 
+            className="absolute top-1/2 left-2/3 w-1.5 h-1.5 bg-white rounded-full"
+            style={{
+              filter: 'blur(1px)',
+              transform: `translate(${scrollY * 0.07}px, ${scrollY * 0.06}px)`,
             }}
           />
         </div>
