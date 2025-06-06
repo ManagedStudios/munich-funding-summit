@@ -1,8 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,9 +16,8 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (section: string) => {
-    console.log(`Navigating to ${section} section`);
-    // Smooth scroll to section would be implemented here
+  const handleNavClick = (path: string) => {
+    navigate(path);
   };
 
   return (
@@ -25,22 +27,29 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-white font-inter font-bold text-xl tracking-tight">
+          <button 
+            onClick={() => handleNavClick('/')}
+            className="text-white font-inter font-bold text-xl tracking-tight hover:text-primary transition-colors duration-200"
+          >
             Munich Funding Summit
-          </div>
+          </button>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => handleNavClick('why-join')}
-              className="text-white font-inter font-medium text-sm tracking-wide hover:text-primary transition-colors duration-200 relative group"
+              onClick={() => handleNavClick('/why-join')}
+              className={`font-inter font-medium text-sm tracking-wide transition-colors duration-200 relative group ${
+                location.pathname === '/why-join' ? 'text-primary' : 'text-white hover:text-primary'
+              }`}
             >
               Why Join?
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
-              onClick={() => handleNavClick('partners')}
-              className="text-white font-inter font-medium text-sm tracking-wide hover:text-primary transition-colors duration-200 relative group"
+              onClick={() => handleNavClick('/partners')}
+              className={`font-inter font-medium text-sm tracking-wide transition-colors duration-200 relative group ${
+                location.pathname === '/partners' ? 'text-primary' : 'text-white hover:text-primary'
+              }`}
             >
               Join as a Partner
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-full"></span>

@@ -1,23 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const HeroSection = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [showDetails, setShowDetails] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      
-      // Show details after scrolling half of viewport height
-      setShowDetails(currentScrollY > window.innerHeight * 0.3);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section className="relative min-h-screen bg-black overflow-hidden font-inter">
       {/* Background Stage Lighting - Coming from Above */}
@@ -31,15 +15,14 @@ const HeroSection = () => {
               rgba(59, 130, 246, 0.3) 30%, 
               rgba(0, 0, 0, 0.9) 60%, 
               rgba(0, 0, 0, 1) 100%)`,
-            transform: `translateY(${scrollY * 0.2}px)`,
           }}
         />
 
-        {/* Mid Layer - Overhead spotlights */}
+        {/* Mid Layer - Overhead spotlights with subtle animation */}
         <div className="absolute inset-0">
           {/* Main center spotlight from above */}
           <div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 rounded-full opacity-40"
+            className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 rounded-full opacity-40 animate-pulse"
             style={{
               background: `radial-gradient(circle, 
                 rgba(249, 186, 63, 0.6) 0%, 
@@ -47,33 +30,35 @@ const HeroSection = () => {
                 rgba(249, 186, 63, 0.1) 50%, 
                 transparent 70%)`,
               filter: 'blur(40px)',
-              transform: `translateX(-50%) translateY(${scrollY * 0.3}px)`,
+              animationDuration: '4s',
             }}
           />
           
           {/* Left overhead light */}
           <div 
-            className="absolute top-0 left-1/4 w-64 h-64 rounded-full opacity-25"
+            className="absolute top-0 left-1/4 w-64 h-64 rounded-full opacity-25 animate-pulse"
             style={{
               background: `radial-gradient(circle, 
                 rgba(255, 255, 255, 0.4) 0%, 
                 rgba(255, 255, 255, 0.2) 40%, 
                 transparent 70%)`,
               filter: 'blur(60px)',
-              transform: `translateY(${scrollY * 0.25}px)`,
+              animationDuration: '6s',
+              animationDelay: '1s',
             }}
           />
           
           {/* Right overhead light */}
           <div 
-            className="absolute top-0 right-1/4 w-64 h-64 rounded-full opacity-25"
+            className="absolute top-0 right-1/4 w-64 h-64 rounded-full opacity-25 animate-pulse"
             style={{
               background: `radial-gradient(circle, 
                 rgba(255, 255, 255, 0.4) 0%, 
                 rgba(255, 255, 255, 0.2) 40%, 
                 transparent 70%)`,
               filter: 'blur(60px)',
-              transform: `translateY(${scrollY * 0.35}px)`,
+              animationDuration: '5s',
+              animationDelay: '2s',
             }}
           />
         </div>
@@ -90,7 +75,7 @@ const HeroSection = () => {
                 rgba(249, 186, 63, 0.3) 40%, 
                 transparent 70%)`,
               filter: 'blur(8px)',
-              transform: `translateX(-50%) translateY(${scrollY * 0.15}px)`,
+              animation: 'glow 5s ease-in-out infinite',
             }}
           />
           
@@ -104,8 +89,10 @@ const HeroSection = () => {
                 rgba(255, 255, 255, 0.2) 50%, 
                 transparent 70%)`,
               filter: 'blur(4px)',
-              transform: `translateY(${scrollY * 0.1}px) rotate(-15deg)`,
-              transformOrigin: 'top center'
+              transform: 'rotate(-15deg)',
+              transformOrigin: 'top center',
+              animation: 'glow 7s ease-in-out infinite',
+              animationDelay: '1.5s',
             }}
           />
           
@@ -119,8 +106,10 @@ const HeroSection = () => {
                 rgba(255, 255, 255, 0.2) 50%, 
                 transparent 70%)`,
               filter: 'blur(4px)',
-              transform: `translateY(${scrollY * 0.1}px) rotate(15deg)`,
-              transformOrigin: 'top center'
+              transform: 'rotate(15deg)',
+              transformOrigin: 'top center',
+              animation: 'glow 6s ease-in-out infinite',
+              animationDelay: '3s',
             }}
           />
         </div>
@@ -135,7 +124,6 @@ const HeroSection = () => {
                 rgba(249, 186, 63, 0.1) 50%, 
                 transparent 100%)`,
               filter: 'blur(20px)',
-              transform: `translateY(${-scrollY * 0.1}px)`,
             }}
           />
         </div>
@@ -143,24 +131,26 @@ const HeroSection = () => {
         {/* Atmospheric particles */}
         <div className="absolute inset-0 opacity-10">
           <div 
-            className="absolute top-1/4 left-1/5 w-2 h-2 bg-white rounded-full"
+            className="absolute top-1/4 left-1/5 w-2 h-2 bg-white rounded-full animate-pulse"
             style={{
               filter: 'blur(1px)',
-              transform: `translate(${scrollY * 0.05}px, ${scrollY * 0.08}px)`,
+              animationDuration: '8s',
             }}
           />
           <div 
-            className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full"
+            className="absolute top-1/3 right-1/4 w-1 h-1 bg-primary rounded-full animate-pulse"
             style={{
               filter: 'blur(0.5px)',
-              transform: `translate(${-scrollY * 0.03}px, ${scrollY * 0.12}px)`,
+              animationDuration: '6s',
+              animationDelay: '2s',
             }}
           />
           <div 
-            className="absolute top-1/2 left-2/3 w-1.5 h-1.5 bg-white rounded-full"
+            className="absolute top-1/2 left-2/3 w-1.5 h-1.5 bg-white rounded-full animate-pulse"
             style={{
               filter: 'blur(1px)',
-              transform: `translate(${scrollY * 0.07}px, ${scrollY * 0.06}px)`,
+              animationDuration: '7s',
+              animationDelay: '4s',
             }}
           />
         </div>
@@ -207,14 +197,8 @@ const HeroSection = () => {
             </span>
           </h2>
 
-          {/* Date & Location - Revealed on scroll */}
-          <div 
-            className={`transition-all duration-800 ease-out ${
-              showDetails 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-8'
-            }`}
-          >
+          {/* Date & Location - Now visible immediately */}
+          <div className="opacity-100">
             <p className="text-lg md:text-xl font-light text-white/80 tracking-wide">
               <span className="text-primary font-medium">Fall 2025</span>
               <span className="mx-4 text-white/40">|</span>
