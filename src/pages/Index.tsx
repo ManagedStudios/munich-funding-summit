@@ -70,22 +70,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section 4: Our Philosophy */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-black mb-8 font-inter">
-            Our Philosophy
-          </h2>
-          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-            We don't believe in "social" startups or "commercial" startups.
-            We believe in solving problems that matter — and scaling them.
-          </p>
-          <blockquote className="text-2xl text-gray-800 italic border-l-4 border-primary pl-6 max-w-3xl mx-auto">
-            "We started with a bias for impact — and discovered the future of business 
-            isn't in choosing between purpose and profit. It's in combining them."
-          </blockquote>
-        </div>
-      </section>
 
       {/* Section 5: Hosting Clubs */}
       <section className="py-20 bg-gray-50">
