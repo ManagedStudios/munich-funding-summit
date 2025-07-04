@@ -33,7 +33,7 @@ const Index = () => {
             <div className="text-center">
               <div className="text-6xl mb-4">🍽️</div>
               <h3 className="text-2xl font-bold mb-3 font-inter">1 exclusive founders dinner</h3>
-              <p className="text-gray-600">Selected from 100+ applicants.</p>
+              <p className="text-gray-600">Founders. Funders. One table.</p>
             </div>
             <div className="text-center">
               <div className="text-6xl mb-4">🤝</div>
