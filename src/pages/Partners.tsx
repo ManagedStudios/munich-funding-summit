@@ -1,10 +1,44 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { CheckCircle } from 'lucide-react';
+import WaitlistForm from '../components/WaitlistForm';
 
 const Partners = () => {
+  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
+
+  const handlePartnerRequest = () => {
+    const subject = 'Partnership Anfrage - Munich Funding Summit';
+    const body = `Hallo,
+
+ich interessiere mich für eine Partnerschaft mit dem Munich Funding Summit.
+
+Bitte senden Sie mir weitere Informationen zu:
+- Partnership Deck
+- Verfügbare Sponsoring-Pakete
+- Individuelle Kooperationsmöglichkeiten
+
+Unternehmen: [Ihr Unternehmen]
+Kontaktperson: [Ihr Name]
+E-Mail: [Ihre E-Mail]
+Telefon: [Ihre Telefonnummer]
+Gewünschter Termin für ein Gespräch: [Datum/Uhrzeit]
+
+Bevorzugte Partnership-Stufe:
+□ Title Partner
+□ Stage Partner  
+□ Supporting Partner
+□ Custom Partnership
+
+Vielen Dank!
+
+Mit freundlichen Grüßen
+[Ihr Name]`;
+    
+    window.location.href = `mailto:events@enactusmunich.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -33,15 +67,15 @@ const Partners = () => {
               <h3 className="text-2xl font-bold mb-6 font-inter">Reach the Right Audience</h3>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-primary mr-3">•</span>
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   Europe's most ambitious student entrepreneurs
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary mr-3">•</span>
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   Leading VCs actively seeking dealflow
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary mr-3">•</span>
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   University leaders and innovation ecosystem builders
                 </li>
               </ul>
@@ -51,15 +85,15 @@ const Partners = () => {
               <h3 className="text-2xl font-bold mb-6 font-inter">Premium Brand Positioning</h3>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-primary mr-3">•</span>
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   Associate your brand with innovation and impact
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary mr-3">•</span>
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   TED-like environment ensures quality perception
                 </li>
                 <li className="flex items-start">
-                  <span className="text-primary mr-3">•</span>
+                  <CheckCircle className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                   Intimate setting creates meaningful connections
                 </li>
               </ul>
@@ -83,11 +117,26 @@ const Partners = () => {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 text-gray-700">
-                  <li>• Co-branding on all materials</li>
-                  <li>• Speaking slot during event</li>
-                  <li>• VIP networking access</li>
-                  <li>• Judge on selection panel</li>
-                  <li>• Premium stage branding</li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Co-branding on all materials
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Speaking slot during event
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    VIP networking access
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Judge on selection panel
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Premium stage branding
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -99,11 +148,26 @@ const Partners = () => {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 text-gray-700">
-                  <li>• Logo on main stage backdrop</li>
-                  <li>• Networking reception sponsor</li>
-                  <li>• Direct access to startups</li>
-                  <li>• Brand mention during pitches</li>
-                  <li>• Social media features</li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Logo on main stage backdrop
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Networking reception sponsor
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Direct access to startups
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Brand mention during pitches
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Social media features
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -115,11 +179,26 @@ const Partners = () => {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 text-gray-700">
-                  <li>• Logo in event materials</li>
-                  <li>• Networking access</li>
-                  <li>• Startup directory access</li>
-                  <li>• Event photography rights</li>
-                  <li>• Post-event report</li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Logo in event materials
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Networking access
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Startup directory access
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Event photography rights
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    Post-event report
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -141,10 +220,22 @@ const Partners = () => {
             <div>
               <h3 className="text-xl font-bold mb-4 font-inter">Potential Collaborations:</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Mentor matching programs</li>
-                <li>• Workshop hosting</li>
-                <li>• Award sponsorship</li>
-                <li>• Follow-up program partnership</li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                  Mentor matching programs
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                  Workshop hosting
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                  Award sponsorship
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                  Follow-up program partnership
+                </li>
               </ul>
             </div>
             <div>
@@ -167,18 +258,33 @@ const Partners = () => {
             Ready to Shape Europe's Future?
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Download our partner deck or schedule a call to discuss custom opportunities.
+            Request our partner deck or schedule a call to discuss custom opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold">
-              Download Partner Deck
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-black font-bold shadow-lg"
+              onClick={handlePartnerRequest}
+            >
+              Request Partner Deck
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-              Schedule a Call
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-black font-bold shadow-lg hover:bg-white hover:text-black shadow-lg"
+              onClick={() => setShowWaitlistForm(true)}
+            >
+              Join Waitlist
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Multi-Step Waitlist Form */}
+      <WaitlistForm 
+        isVisible={showWaitlistForm}
+        onClose={() => setShowWaitlistForm(false)}
+      />
     </div>
   );
 };

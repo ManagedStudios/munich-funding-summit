@@ -1,12 +1,15 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import { Button } from '../components/ui/button';
-import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Separator } from '../components/ui/separator';
+import SimpleWaitlist from '../components/SimpleWaitlist';
+import WaitlistForm from '../components/WaitlistForm';
 
 const Index = () => {
+  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
+
   return (
     <div className="min-h-screen bg-black">
       <Navigation />
@@ -64,8 +67,12 @@ const Index = () => {
           <p className="text-lg text-primary mb-12 font-medium">
             You're not just in the audience — you're in the dealflow.
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold">
-            Request VC Access →
+          <Button 
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-black font-bold shadow-lg"
+            onClick={() => setShowWaitlistForm(true)}
+          >
+            Request VC Access
           </Button>
         </div>
       </section>
@@ -128,7 +135,7 @@ const Index = () => {
               <p className="text-gray-600">Judge, mentor, or speak</p>
             </div>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold">
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold shadow-lg">
             Request Partner Deck
           </Button>
         </div>
@@ -144,16 +151,10 @@ const Index = () => {
             Applications. Lineups. The big names. First to know.
           </p>
           <div className="flex justify-center">
-            <div className="flex max-w-md w-full">
-              <input 
-                type="email" 
-                placeholder="Your email"
-                className="flex-1 px-4 py-3 rounded-l-md border-0 focus:ring-2 focus:ring-primary"
-              />
-              <Button className="bg-primary hover:bg-primary/90 text-black font-bold rounded-l-none">
-                Subscribe
-              </Button>
-            </div>
+            <SimpleWaitlist 
+              placeholder="Ihre E-Mail-Adresse"
+              buttonText="Subscribe"
+            />
           </div>
         </div>
       </section>
@@ -189,6 +190,12 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      
+      {/* Multi-Step Waitlist Form */}
+      <WaitlistForm 
+        isVisible={showWaitlistForm}
+        onClose={() => setShowWaitlistForm(false)}
+      />
     </div>
   );
 };

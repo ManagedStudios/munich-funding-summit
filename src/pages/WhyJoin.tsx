@@ -1,10 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import SimpleWaitlist from '../components/SimpleWaitlist';
+import WaitlistForm from '../components/WaitlistForm';
 
 const WhyJoin = () => {
+  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -109,11 +113,20 @@ const WhyJoin = () => {
           <p className="text-xl text-gray-300 mb-8">
             Applications open soon. Be the first to know when they go live.
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-black font-bold">
-            Get Notified
-          </Button>
+          <div className="flex flex-col items-center space-y-4">
+            <SimpleWaitlist 
+              placeholder="Ihre E-Mail-Adresse"
+              buttonText="Get Notified"
+            />
+          </div>
         </div>
       </section>
+      
+      {/* Multi-Step Waitlist Form */}
+      <WaitlistForm 
+        isVisible={showWaitlistForm}
+        onClose={() => setShowWaitlistForm(false)}
+      />
     </div>
   );
 };
