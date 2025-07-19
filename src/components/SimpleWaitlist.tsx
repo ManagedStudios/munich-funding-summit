@@ -102,7 +102,21 @@ const SimpleWaitlist: React.FC<SimpleWaitlistProps> = ({
         const errorMessage = handleSupabaseError(error);
         toast.error(errorMessage || 'Ein unerwarteter Fehler ist aufgetreten.');
       } else {
-        toast.success('🎉 Erfolgreich angemeldet! Sie erhalten bald Updates zum Munich Funding Summit.');
+        // Send confirmation email
+        try {
+          await supabase.functions.invoke('send-confirmation-email', {
+            body: {
+              email: trimmedEmail,
+              firstName: '',
+              lastName: ''
+            }
+          });
+        } catch (emailError) {
+          console.error('Error sending confirmation email:', emailError);
+          // Don't fail the registration if email fails
+        }
+
+        toast.success('🎉 Erfolgreich angemeldet! Prüfen Sie Ihre E-Mails für die Bestätigung.');
         setEmail('');
       }
     } catch (error) {

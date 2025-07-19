@@ -214,6 +214,20 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ isVisible, onClose, initial
         return;
       }
 
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-confirmation-email', {
+          body: {
+            email: sanitizedEmail,
+            firstName: sanitizedData.first_name,
+            lastName: sanitizedData.last_name
+          }
+        });
+      } catch (emailError) {
+        console.error('Error sending confirmation email:', emailError);
+        // Don't fail the registration if email fails
+      }
+
       // Success handling
       toast.success('🎉 Erfolgreich zur Warteliste hinzugefügt! Prüfen Sie Ihre E-Mails für die Bestätigung.');
       reset();
