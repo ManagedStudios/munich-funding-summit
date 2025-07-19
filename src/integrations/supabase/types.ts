@@ -16,46 +16,49 @@ export type Database = {
     Tables: {
       waitlist: {
         Row: {
-          id: string
+          company: string | null
+          created_at: string | null
           email: string
           first_name: string
+          id: string
+          interests: string[]
           last_name: string
-          company: string | null
+          motivation: string
+          newsletter: boolean | null
           role: string | null
           stage: string
-          motivation: string
-          interests: string[]
-          newsletter: boolean
-          created_at: string
           updated_at: string | null
+          user_id: string | null
         }
         Insert: {
-          id?: string
+          company?: string | null
+          created_at?: string | null
           email: string
           first_name: string
+          id?: string
+          interests?: string[]
           last_name: string
-          company?: string | null
+          motivation: string
+          newsletter?: boolean | null
           role?: string | null
           stage: string
-          motivation: string
-          interests: string[]
-          newsletter?: boolean
-          created_at?: string
           updated_at?: string | null
+          user_id?: string | null
         }
         Update: {
-          id?: string
+          company?: string | null
+          created_at?: string | null
           email?: string
           first_name?: string
+          id?: string
+          interests?: string[]
           last_name?: string
-          company?: string | null
+          motivation?: string
+          newsletter?: boolean | null
           role?: string | null
           stage?: string
-          motivation?: string
-          interests?: string[]
-          newsletter?: boolean
-          created_at?: string
           updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }

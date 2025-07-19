@@ -67,10 +67,28 @@ const SimpleWaitlist: React.FC<SimpleWaitlistProps> = ({
         return;
       }
 
+      // Create user account with Supabase Auth (simple signup)
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: trimmedEmail,
+        password: crypto.randomUUID(), // Generate random password
+        options: {
+          emailRedirectTo: `${window.location.origin}/`,
+          data: {
+            simple_signup: true
+          }
+        }
+      });
+
+      if (authError && authError.message !== 'User already registered') {
+        console.error('Auth error:', authError);
+        // Continue with data insertion even if auth fails
+      }
+
       // Insert new entry with minimal data and better error handling
       const { error } = await supabase
         .from('waitlist')
         .insert([{
+          user_id: authData?.user?.id || null,
           email: trimmedEmail,
           first_name: '',
           last_name: '',
@@ -78,7 +96,6 @@ const SimpleWaitlist: React.FC<SimpleWaitlistProps> = ({
           motivation: 'Newsletter signup',
           interests: ['newsletter'],
           newsletter: true,
-          created_at: new Date().toISOString(),
         }]);
 
       if (error) {

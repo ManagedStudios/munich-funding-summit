@@ -165,8 +165,32 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ isVisible, onClose, initial
         return;
       }
 
-      // Sanitize and prepare data
+      // Create user account with Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: sanitizedEmail,
+        password: crypto.randomUUID(), // Generate random password
+        options: {
+          emailRedirectTo: `${window.location.origin}/`,
+          data: {
+            first_name: sanitizeName(data.firstName),
+            last_name: sanitizeName(data.lastName),
+            company: data.company ? sanitizeName(data.company) : null,
+            role: data.role ? sanitizeName(data.role) : null,
+          }
+        }
+      });
+
+      if (authError) {
+        // If user already exists, that's okay for our use case
+        if (authError.message !== 'User already registered') {
+          console.error('Auth error:', authError);
+          toast.error('Fehler beim Erstellen des Benutzerkontos. Daten werden trotzdem gespeichert.');
+        }
+      }
+
+      // Sanitize and prepare data for waitlist table
       const sanitizedData = {
+        user_id: authData?.user?.id || null, // Link to auth user if created
         email: sanitizedEmail,
         first_name: sanitizeName(data.firstName),
         last_name: sanitizeName(data.lastName),
@@ -176,23 +200,22 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ isVisible, onClose, initial
         motivation: data.motivation.trim(),
         interests: data.interests,
         newsletter: data.newsletter,
-        created_at: new Date().toISOString(),
       };
 
-      // Insert new entry with retry logic
-      const { error } = await supabase
+      // Insert new entry into waitlist table
+      const { error: insertError } = await supabase
         .from('waitlist')
         .insert([sanitizedData]);
 
-      if (error) {
-        const errorMessage = handleSupabaseError(error);
+      if (insertError) {
+        const errorMessage = handleSupabaseError(insertError);
         toast.error(errorMessage || 'Ein unerwarteter Fehler ist aufgetreten.');
         setIsSubmitting(false);
         return;
       }
 
       // Success handling
-      toast.success('🎉 Erfolgreich zur Warteliste hinzugefügt! Sie erhalten bald Updates zum Munich Funding Summit.');
+      toast.success('🎉 Erfolgreich zur Warteliste hinzugefügt! Prüfen Sie Ihre E-Mails für die Bestätigung.');
       reset();
       setCurrentStep(1);
       
